@@ -4,7 +4,7 @@
 A a code that thanks every member of group-23
 
 Parameters:
-    - group_23: Takes an array of string input of group members. 
+    - group_23: Takes an array of string input names of group members. 
 
 @author: Novel Yonas
 
