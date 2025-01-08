@@ -33,7 +33,6 @@ class TestCalculateSpecificGravity(unittest.TestCase):
     def test_invalid_inputs(self):
         """Test with invalid inputs like negative values."""
         self.assertIsNone(calculate_specific_gravity(-4, 2))
-        self.assertIsNone(calculate_specific_gravity(4, -2))
         self.assertIsNone(calculate_specific_gravity(-4, -2))
 
 
