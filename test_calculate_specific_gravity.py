@@ -3,63 +3,34 @@ Unit tests for the specific_gravity_calculator module.
 """
 
 import unittest
-from solutions.calculate_specific_gravity import calculate_specific_gravity
+from calculate_specific_gravity import calculate_specific_gravity
 
 
 class TestSpecificGravityCalculator(unittest.TestCase):
     """
-    Test cases for the SpecificGravityCalculator.
+    Test cases for the calculate_specific_gravity.
     """
 
-    def test_all_points_on_line(self):
+    def test_equal_measurements_of_weight(self):
         """
-        Test that the function correctly identifies points on a straight line.
+        Test must pop 'Error: Weight in air and weight in water cannot be the same.'.
         """
-        solution = Solution()
-        coordinates = [[1, 2], [2, 3], [3, 4]]
-        self.assertTrue(solution.check_straight_line(coordinates))
+        actual = calculate_specific_gravity(2,2)
+        expected = 'Error: recheck your measurements.'
+        self.assertTrue(actual == expected)
 
-    def test_points_not_on_line(self):
+    def test_unequal_even_measurements_of_weight(self):
         """
-        Test that the function correctly identifies points not on a straight line.
+        Test is being checked for unequal even measurements of weight.
         """
-        solution = Solution()
-        coordinates = [[1, 1], [2, 2], [3, 4]]
-        self.assertFalse(solution.check_straight_line(coordinates))
-
-    def test_vertical_line(self):
+        actual = calculate_specific_gravity(4,2)
+        expected = 2.0
+        self.assertTrue(actual == expected)
+        
+    def test_unequal_odd_even_measurements_of_weight(self):
         """
-        Test that the function works for vertical lines.
+        Test is being checked for unequal odd and even measurements of weight.
         """
-        solution = Solution()
-        coordinates = [[2, 1], [2, 3], [2, 5]]
-        self.assertTrue(solution.check_straight_line(coordinates))
-
-    def test_insufficient_points(self):
-        """
-        Test that the function raises an exception for fewer than two points.
-        """
-        solution = Solution()
-        coordinates = [[1, 1]]
-        with self.assertRaises(ValueError):
-            solution.check_straight_line(coordinates)
-
-    def test_horizontal_line(self):
-        """
-        Test that the function works for horizontal lines.
-        """
-        solution = Solution()
-        coordinates = [[1, 2], [3, 2], [5, 2]]
-        self.assertTrue(solution.check_straight_line(coordinates))
-
-    def test_boundary_case(self):
-        """
-        Test that the function handles edge cases for large input ranges.
-        """
-        solution = Solution()
-        coordinates = [[-1000000, -1000000], [0, 0], [1000000, 1000000]]
-        self.assertTrue(solution.check_straight_line(coordinates))
-
-
-if __name__ == "__main__":
-    unittest.main()
+        actual = calculate_specific_gravity(5,2)
+        expected = 1.6666666666666667
+        self.assertTrue(actual == expected)   
