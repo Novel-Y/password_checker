@@ -1,7 +1,22 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+    Unit test class for the `calculate_specific_gravity` function.
+
+    This class contains test cases to validate the functionality and edge cases of the
+    `calculate_specific_gravity` function, ensuring it handles valid inputs, invalid inputs,
+    and edge conditions gracefully.
+
+    Test cases include:
+    - Valid inputs where the specific gravity is correctly calculated.
+    - Cases where the weight in air equals or is less than the weight in water.
+    - Inputs with negative values to check for proper error handling.
+"""
 import unittest
-from specific_gravity_calculator import calculate_specific_gravity,
-  # Replace 'your_module_name' with the actual module name
-class TestTestCalculateSpecificGravity(unittest.TestCase):
+from solutions.specific_gravity_calculator import calculate_specific_gravity
+
+
+class TestCalculateSpecificGravity(unittest.TestCase):
     def test_valid_input(self):
         """Test with valid inputs."""
         self.assertAlmostEqual(calculate_specific_gravity(4, 2), 2.0)
