@@ -27,12 +27,18 @@ def calculate_review_days(start_day):
         [1, 3, 7, 15]
     """
     review_days = []  # Initialize an empty list to store review days
-    days_to_next_review = 1  # Start with 1 day to the first review
+    current_day = start_day
+    interval = 1  # Start with 1 day to the first review
 
     for _ in range(4):  # Loop to calculate four review days
-        # Calculate the next review day, wrapping around a 31-day cycle
-        next_review_day = (start_day + days_to_next_review - 1) % 31 + 1
-        review_days.append(next_review_day)  # Add the calculated day to the list
-        days_to_next_review *= 2  # Double the interval for the next review
+        # Calculate the next review day
+        current_day += interval
+
+        # Adjust the day if it exceeds 31
+        while current_day > 31:
+            current_day -= 31
+
+        review_days.append(current_day)  # Add the calculated day to the list
+        interval *= 2  # Double the interval for the next review
 
     return review_days  # Return the list of review days
