@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+
 def calculate_review_days(start_day):
     """
     Calculate spaced repetition review days based on an initial study day.
