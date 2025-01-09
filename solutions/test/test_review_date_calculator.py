@@ -1,5 +1,5 @@
 import unittest
-from spaced_repetition import calculate_review_days
+from review_date_calculator import calculate_review_days
 
 
 class TestCalculateReviewDays(unittest.TestCase):
