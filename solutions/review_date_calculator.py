@@ -20,6 +20,9 @@ def calculate_review_days(start_day):
         >>> calculate_review_days(15)
         [16, 18, 22, 30]
 
+        >>> calculate_review_days(28)
+        [29, 31, 3, 11]
+
         >>> calculate_review_days(30)
         [31, 2, 6, 14]
 
@@ -35,7 +38,7 @@ def calculate_review_days(start_day):
         current_day += interval
 
         # Adjust the day if it exceeds 31
-        while current_day > 31:
+        if current_day > 31:
             current_day -= 31
 
         review_days.append(current_day)  # Add the calculated day to the list

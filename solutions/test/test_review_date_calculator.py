@@ -26,7 +26,7 @@ class TestCalculateReviewDays(unittest.TestCase):
 
     def test_start_day_edge(self):
         """Test case for an edge start day 28."""
-        self.assertEqual(calculate_review_days(28), [29, 31, 3, 11])
+        self.assertEqual(calculate_review_days(28), [29, 31, 4, 12])
 
 
 if __name__ == "__main__":
