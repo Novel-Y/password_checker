@@ -1,6 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+"""
+Unit test class for the `calculate_review_days` function.
 
+This class contains test cases to validate the functionality and edge cases of the
+`calculate_review_days` function, ensuring it handles various input scenarios correctly
+and produces the expected output for spaced repetition review schedules.
+
+The test suite aims to comprehensively cover the function's behavior, including:
+- Correctness of the calculated review days.
+- Proper handling of month transitions.
+"""
 import unittest
 from solutions.review_date_calculator import calculate_review_days
 
@@ -27,7 +37,3 @@ class TestCalculateReviewDays(unittest.TestCase):
     def test_start_day_edge(self):
         """Test case for an edge start day 28."""
         self.assertEqual(calculate_review_days(28), [29, 31, 4, 12])
-
-
-if __name__ == "__main__":
-    unittest.main()

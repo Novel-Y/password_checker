@@ -17,6 +17,8 @@ from solutions.specific_gravity_calculator import calculate_specific_gravity
 
 
 class TestCalculateSpecificGravity(unittest.TestCase):
+    """specific_gravity_calculator"""
+
     def test_valid_input(self):
         """Test with valid inputs."""
         self.assertAlmostEqual(calculate_specific_gravity(4, 2), 2.0)
@@ -34,7 +36,3 @@ class TestCalculateSpecificGravity(unittest.TestCase):
         """Test with invalid inputs like negative values."""
         self.assertIsNone(calculate_specific_gravity(-4, 2))
         self.assertIsNone(calculate_specific_gravity(-4, -2))
-
-
-if __name__ == "__main__":
-    unittest.main()
