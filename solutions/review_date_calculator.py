@@ -1,38 +1,34 @@
-from datetime import datetime, timedelta
-
-
-def calculate_review_dates(start_date):
+def calculate_review_days(start_day):
     """
-    Calculate spaced repetition review dates based on an initial study date.
+    Calculate spaced repetition review days based on an initial study day.
 
     Args:
-        start_date (datetime): The date of the first study session.
+        start_day (int): The day of the initial study session (1-31).
 
     Returns:
-        list[int]: A list of four spaced repetition review dates (day numbers only). Each subsequent review is spaced at double
-        the interval of the previous one, considering month-end wrap-around.
+        list[int]: A list of four spaced repetition review days. Each subsequent review is spaced at double
+        the interval of the previous one, ignoring month and year changes.
 
-    Example:
-        >>> calculate_review_dates(datetime(1))
+    Examples:
+        >>> calculate_review_days(1)
         [2, 4, 8, 16]
 
-        >>> calculate_review_dates(datetime(31))  # Start date is the last day of a month
-        [1, 3, 7, 15]
+        >>> calculate_review_days(15)
+        [16, 18, 22, 30]
 
-        >>> calculate_review_dates(datetime(28))  # Start date in February of a non-leap year
-        [1, 3, 7, 15]
-
-        >>> calculate_review_dates(datetime(30))  # Start date near the year-end
+        >>> calculate_review_days(30)
         [31, 2, 6, 14]
-    """
-    review_dates = []
-    days_to_next_review = 1  # Days to the next review start at 1
 
-    for _ in range(4):
-        next_review_date = start_date + timedelta(
-            days=days_to_next_review
-        )  # Adjust review interval
-        review_dates.append(next_review_date.day)
+        >>> calculate_review_days(31)
+        [1, 3, 7, 15]
+    """
+    review_days = []  # Initialize an empty list to store review days
+    days_to_next_review = 1  # Start with 1 day to the first review
+
+    for _ in range(4):  # Loop to calculate four review days
+        # Calculate the next review day, wrapping around a 31-day cycle
+        next_review_day = (start_day + days_to_next_review - 1) % 31 + 1
+        review_days.append(next_review_day)  # Add the calculated day to the list
         days_to_next_review *= 2  # Double the interval for the next review
 
-    return review_dates
+    return review_days  # Return the list of review days
